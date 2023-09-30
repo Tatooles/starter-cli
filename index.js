@@ -41,5 +41,27 @@ async function askName() {
   playerName = answers.player_name;
 }
 
-// await welcome();
-// await askName();
+async function question1() {
+  const answers = inquirer.prompt({
+    name: "question_1",
+    type: "list",
+    message: "Who is the fastest player in the NFL this season (2023)\n",
+    choices: [
+      "Chris Johnson",
+      "Tyreek Hill",
+      "Tariq Woolen",
+      "Maruise Goodwin",
+    ],
+  });
+
+  // return handleAnswer(answers.question_1 == "Tyreek Hill");
+}
+
+// async function handleAnswer() {
+//   const spinner = createSpinner("Checking answer...").start();
+//   await sleep();
+// }
+
+await welcome();
+await askName();
+await question1();
