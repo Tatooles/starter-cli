@@ -57,6 +57,33 @@ async function question1() {
   return handleAnswer(answers.question_1 === "Tyreek Hill");
 }
 
+async function question2() {
+  const answers = await inquirer.prompt({
+    name: "question_2",
+    type: "list",
+    message: "Who is the tallest player in the NFL this season (2023)?\n",
+    choices: ["Walker Little", "Orlando Brown", "Deuce Vaughn", "Dan Skipper"],
+  });
+
+  return handleAnswer(answers.question_2 === "Dan Skipper");
+}
+
+async function question3() {
+  const answers = await inquirer.prompt({
+    name: "question_3",
+    type: "list",
+    message: "Who led the NBA in scoring in the 2017-18 season?\n",
+    choices: [
+      "James Harden",
+      "Russell Westbrook",
+      "LeBron James",
+      "Anthony Davis",
+    ],
+  });
+
+  return handleAnswer(answers.question_3 === "James Harden");
+}
+
 async function handleAnswer(isCorrect) {
   const spinner = createSpinner("Checking answer...").start();
   await sleep();
@@ -74,3 +101,5 @@ async function handleAnswer(isCorrect) {
 await welcome();
 await askName();
 await question1();
+await question2();
+await question3();
