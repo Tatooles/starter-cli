@@ -42,10 +42,10 @@ async function askName() {
 }
 
 async function question1() {
-  const answers = inquirer.prompt({
+  const answers = await inquirer.prompt({
     name: "question_1",
     type: "list",
-    message: "Who is the fastest player in the NFL this season (2023)\n",
+    message: "Who is the fastest player in the NFL this season (2023)?\n",
     choices: [
       "Chris Johnson",
       "Tyreek Hill",
@@ -54,13 +54,22 @@ async function question1() {
     ],
   });
 
-  // return handleAnswer(answers.question_1 == "Tyreek Hill");
+  return handleAnswer(answers.question_1 === "Tyreek Hill");
 }
 
-// async function handleAnswer() {
-//   const spinner = createSpinner("Checking answer...").start();
-//   await sleep();
-// }
+async function handleAnswer(isCorrect) {
+  const spinner = createSpinner("Checking answer...").start();
+  await sleep();
+
+  if (isCorrect) {
+    spinner.success({
+      text: `Nice work ${playerName}. That is the correct answer.`,
+    });
+  } else {
+    spinner.error({ text: `Game over, you lose ${playerName}!` });
+    process.exit(1);
+  }
+}
 
 await welcome();
 await askName();
