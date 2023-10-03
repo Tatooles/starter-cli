@@ -84,6 +84,33 @@ async function question3() {
   return handleAnswer(answers.question_3 === "James Harden");
 }
 
+async function question4() {
+  const answers = await inquirer.prompt({
+    name: "question_4",
+    type: "list",
+    message: "Who is the greatest NBA player of all time?\n",
+    choices: [
+      "Kareem Abdul-Jabbar",
+      "Michael Jordan",
+      "LeBron James",
+      "Kobe Bryant",
+    ],
+  });
+
+  return handleAnswer(answers.question_4 === "Michael Jordan");
+}
+
+async function question5() {
+  const answers = await inquirer.prompt({
+    name: "question_5",
+    type: "list",
+    message: "Who led the NFL in passing yards in the 2021-22 season?\n",
+    choices: ["Tom Brady", "Patrick Mahomes", "Joe Burrow", "Justin Herbert"],
+  });
+
+  return handleAnswer(answers.question_5 === "Tom Brady");
+}
+
 async function handleAnswer(isCorrect) {
   const spinner = createSpinner("Checking answer...").start();
   await sleep();
@@ -103,3 +130,5 @@ await askName();
 await question1();
 await question2();
 await question3();
+await question4();
+await question5();
