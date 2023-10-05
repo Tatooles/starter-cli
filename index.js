@@ -125,6 +125,15 @@ async function handleAnswer(isCorrect) {
   }
 }
 
+function winnner() {
+  console.clear();
+  const msg = `Congrats, ${playerName} \n You have won ! ! !`;
+
+  figlet(msg, (err, data) => {
+    console.log(gradient.pastel.multiline(data));
+  });
+}
+
 await welcome();
 await askName();
 await question1();
@@ -132,3 +141,4 @@ await question2();
 await question3();
 await question4();
 await question5();
+winnner();
